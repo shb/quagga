@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8"/>
+		<title>Quagga EPL2 file editor and previewer</title>
+		<style type="text/css">
+* { margin:0; padding:0; }
+html,body { font-family:sans; }
+
+#editorText { font-family:monospace; }
+
+#preview { overflow-y:scroll; }
+#preview .page { background:white; border-radius:3px; margin:1ex auto; position:relative; }
+#preview .page * { position:absolute; }
+#preview .page hr { border:0 solid black; background:black; }
+#preview .page p { line-height:1; white-space:pre; }
+#preview.dpi203 .font1 { font:6pt "Roboto Mono",monospace,sans; }
+#preview.dpi203 .font2 { font:7pt "Roboto Mono",monospace,sans; }
+#preview.dpi203 .font3 { font:10pt "Roboto Mono",monospace,sans; }
+#preview.dpi203 .font4 { font:12pt "Roboto Mono",monospace,sans; }
+
+@media print {
+	* { display:none; }
+}
+		</style>
+		<link rel="stylesheet" type="texxt/css" href="//fonts.google.com/?family=Roboto+Mono:500"/>
+	</head>
+	<body>
+		<div id="preview" class="pane dpi203" style="position:absolute; top:0; left:0; bottom:0; width:66%; background:black">
+		</div>
+		<div id="editor" class="pane" style="position:absolute; top:0; right:0; bottom:0; width:34%; padding:1px; box-sizing:border-box">
+			<div class="toolbar">
+				<button onclick="editor.print()">Print</button>
+				Open:<input id="editorFile" type="file" onchange="editor.loadFile(this, 'editorText')"/>
+				<button>&rarr;</button>
+			</div>
+			<br/>
+			<div>
+				<textarea id="editorText" rows="25" style="width:100%" onchange="editor.print()">
+N
+OD10
+q812
+Q1370,24
+D15
+ZT
+LO0,308,800,2
+LO0,565,800,2
+LO0,1085,800,2
+LO0,1158,800,2
+A35,166,0,2,1,1,N,"ORIGIN ID:MILA  0290630108"
+A35,185,0,2,1,1,N,"Ufficio Spedizione"
+A35,205,0,2,1,1,N,"Fabnihil S.R.L."
+A35,225,0,2,1,1,N,"Via Addresso 3/a"
+A35,246,0,2,1,1,N,""
+A35,266,0,2,1,1,N,"Testate, MI 20067"
+A35,286,0,2,1,1,N,"ITALY, IT"
+A490,166,0,2,1,1,N,"Ship Date: 13JAN16"
+A490,205,0,2,1,1,N,"CAD: 118637685/WSXI3000"
+A10,315,0,3,1,1,N,"TO"
+A43,350,0,4,1,1,N,"John Doe"
+A43,385,0,4,1,1,N,"123 Booksville Park"
+A43,420,0,4,1,1,N,"**TEST LABEL - DO NOT SHIP**"
+A550,467,0,2,2,2,N,"(IE)"
+A500,575,0,3,2,2,N,"B3 DUBA "
+A490,650,0,4,1,1,N,"PKG TYPE: CUSTOMER"
+A35,700,0,2,1,1,N,"TRK#"
+A360,700,0,2,1,1,N,"Form"
+A35,780,0,1,2,2,N,"INTL ECONOMY"
+A43,315,0,4,1,1,N,"John Doe"
+A615,315,0,2,1,1,N,"353861701206"
+LO670,430,105,10
+LO670,440,10,112
+LO765,440,10,112
+LO670,552,105,10
+LO477,162,2,146
+A650,345,0,3,2,2,N,"FedEx"
+A715,385,0,2,1,1,N,"Express"
+A690,448,0,5,2,2,N,"E"
+A575,530,0,2,1,2,N,"AWB"
+A16,850,0,2,1,1,N,"DESC1:Cool"
+A16,870,0,2,1,1,N,"DESC2:Stuff"
+A16,890,0,2,1,1,N,"DESC3:"
+A16,910,0,2,1,1,N,"DESC4:"
+A490,620,0,4,1,1,N,"RES"
+A95,700,0,4,1,1,N,"7946 7265 4288"
+A360,720,0,2,1,1,N,"0430"
+B30,590,0,K,2,6,100,N,"B7946726542880430D"
+A450,1095,0,2,1,1,N,"SIGN: Ufficio Spedizione"
+A16,1095,0,2,1,1,N,"COUNTRY MFG: IT IT  "
+A16,1115,0,2,1,1,N,"CARRIAGE VALUE: 510.00 EUR"
+A16,1135,0,2,1,1,N,"CUSTOMS VALUE: 5250.00 EUR"
+A450,1115,0,2,1,1,N,"T/C: S 510087704"
+A450,1135,0,2,1,1,N,"D/T: R "
+A16,1165,0,1,1,1,N,"For all commodities, technology or software previously exported from the"
+A16,1185,0,1,1,1,N,"United States, this was done in accordance with the Export Administration"
+A16,1205,0,1,1,1,N,"Regulations. Diversion of these items contrary to U.S. law or any other "
+A16,1225,0,1,1,1,N,"applicable country's law is prohibited."
+A16,1245,0,1,1,1,N,"The Montreal or Warsaw Convention may apply and will govern and in most"
+A16,1265,0,1,1,1,N,"cases limit the liability of Federal Express for loss or delay of or"
+A16,1285,0,1,1,1,N,"damage to your shipment. Subject to the conditions of the"
+A16,1305,0,1,1,1,N,"contract on the reverse."
+A15,1320,0,2,1,2,N,"FEDEX AWB COPY - PLEASE PLACE IN POUCH"
+A783,560,3,1,1,1,N,"J161016010420uv"
+A15,1320,0,2,1,2,N,"FEDEX AWB COPY - PLEASE PLACE IN POUCH"
+A490,225,0,2,1,1,N,"ex-EORI:IT123456789012"
+A490,185,0,2,1,1,N,"TotWgt: 0.25 KG"
+A490,245,0,2,1,1,N,"Dims: 15x15x15 CM"
+A490,285,0,2,1,1,N,"EIN/VAT: "
+A43,458,0,3,1,2,N,"Drogheda, Co 00000"
+A240,747,0,4,1,1,N,"1 of 2"
+A16,830,0,2,1,1,N,"REF: "
+P3
+N
+
+N
+OD10
+q812
+Q1370,24
+D15
+ZT
+LO12,301,753,2
+LO12,567,777,2
+LO12,856,777,2
+LO464,170,2,129
+A478,172,0,2,1,1,N,"SHIP DATE: 13JAN16"
+A478,208,0,2,1,1,N,"CAD: 118637685/WSXI3000"
+A8,313,0,2,1,1,N,"TO"
+A37,395,0,1,2,3,N,"123 BOOKSVILLE PARK"
+A37,437,0,1,2,3,N,"**TEST LABEL - DO NOT SHIP**"
+A37,479,0,1,2,3,N,"DROGHEDA CO 00000"
+A708,482,0,2,2,2,N,"(IE)"
+A28,909,0,3,1,1,N,"TRK#"
+A28,967,0,4,1,1,N,"## MASTER ## "
+A136,879,0,4,1,1,N,"1 of 2"
+A32,172,0,2,1,1,N,"ORIGIN ID:MILA "
+A224,172,0,2,1,1,N,"0290630108"
+A32,190,0,2,1,1,N,"UFFICIO SPEDIZIONE"
+A32,208,0,2,1,1,N,"FABNIHIL S.R.L."
+A32,226,0,2,1,1,N,"VIA ADDRESSO 3/A"
+A32,244,0,2,1,1,N,""
+A32,262,0,2,1,1,N,"TESTATE, MI 20067"
+A32,280,0,2,1,1,N,"ITALY IT"
+A478,262,0,2,1,1,N,"BILL SENDER"
+A37,311,0,1,2,3,N,"JOHN DOE"
+A35,521,0,2,1,1,N,"353861701206"
+A37,353,0,1,2,3,N,"JOHN DOE"
+LO677,640,104,10
+LO677,650,10,112
+LO771,650,10,112
+LO677,762,104,10
+A652,578,0,3,2,2,N,"FedEx"
+A708,617,0,2,1,1,N,"Express"
+A697,658,0,5,2,2,N,"E"
+A790,790,3,1,1,1,N,"J161016010402uv"
+b21,578,P,800,800,s5,f0,x2,y10,r80,o0,l14,"[)>010200000372047946726542880430FDE5100877040131/21.00KGN241 Brookville ParkDrogheda  Patrick Healy0610ZEII0611ZPatrick Healy12Z35386170120615Z11863768520Z50031Z101009574202001102190079467265428832Z022834Z0199ZEI0004IT5250EURfregnaY500"
+A28,1004,0,4,3,4,N,"B3 DUBA "
+A459,1052,0,3,2,2,N,""
+A791,462,3,1,1,1,N,"540J1/0E61/727F"
+A104,913,0,4,1,2,N,"7946 7265 4288"
+A409,862,0,1,2,4,N,"                 PM"
+A409,914,0,1,2,4,N,"       INTL ECONOMY"
+A469,966,0,1,2,3,N,"             RES"
+A509,1008,0,3,2,2,N,"       219"
+A604,1068,0,3,1,1,N,"   -IE"
+A705,1052,0,3,2,2,N,"DUB"
+A39,1094,0,4,1,1,N,""
+B75,1155,0,1,3,4,200,N,"1010095742020011021900000000000000"
+A478,190,0,2,1,1,N,"TOTWGT: 0.25 KG"
+A478,226,0,2,1,1,N,"DIMS: 15x15x15 CM"
+A328,526,0,1,1,1,N,"REF: "
+A38,540,0,1,1,1,N,"INV: "
+A38,554,0,1,1,1,N,"PO: "
+A428,554,0,1,1,1,N,"DEPT: "
+LO25,930,58,1
+LO25,930,1,26
+LO83,930,1,26
+LO25,956,58,1
+A31,936,0,2,1,1,N,"0430"
+P1
+N
+</textarea>
+			</div>
+		</div>
+
+		<script type="text/javascript" src="Printer.js"></script>
+		<script type="text/javascript" defer async>
+
+editor = new (function Epl2Editor ()
+{
+	printer = new Epl2HtmlPrinter('preview');
+
+	this.print = function ()
+	{
+		printer.print(document.getElementById('editorText'));
+	};
+
+	this.loadFile = function (input, dest)
+	{
+		var file = input.files[0];
+		console.dir(file);
+		var reader = new FileReader();
+		var encoding = 'UTF-8';
+
+		reader.readAsText(file, encoding);
+		reader.addEventListener('loadend', function ()
+		{
+			if (reader.readyState) {
+					document.getElementById(dest).value = reader.result;
+			}
+		});
+	};
+})();
+
+		</script>
+
+	</body>
+</html>
