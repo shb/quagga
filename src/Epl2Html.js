@@ -1,9 +1,6 @@
-if ('undefined' == typeof module && 'object' == typeof window)
-	var exports = window;
+Epl2Html.prototype = new Epl2Printer;
 
-exports.Epl2HtmlPrinter = Epl2HtmlPrinter;
-
-function Epl2HtmlPrinter ()
+function Epl2Html ()
 {
 	var container;
 	var buffer;
@@ -11,43 +8,15 @@ function Epl2HtmlPrinter ()
 
 	function init (containerId)
 	{
-		container = document.getElementById(containerId);
+		var container_id = containerId;
+		container = document.getElementById(container_id);
 	}
 
-	this.print = print;
-	function print (source)
+	this.open = open;
+	function open (options)
 	{
-		container.innerHTML = '';
-
-		var code = '';
-
-		if ('string' == typeof source) {
-			code = source;
-		} else if ('undefined' != typeof source.value) {
-			code = source.value;
-		} else {
-			console.error("Undefined source contents");
-		}
-
-		var commands = code.split(/\n/);
-		for (var c in commands)
-		{
-			execute(commands[c]);
-		}
-
-	}
-
-	function execute (command)
-	{
-		var args = command.trim().split(',');
-		var parsed = args[0].match(/^([A-Za-z]{1,2})(.*)$/);
-		if (parsed) {
-			args[0] = parsed[2];
-			args.unshift(parsed[1]);
-		}
-
-		if (args[0] in commands)
-			commands[args[0]].apply(self, args);
+		container.innerHtml = '';
+		console.log("epl2: opened connection to Epl2Html printer '"+container.id+"'");
 	}
 
 	function dots (value) { return value+'px'; }
@@ -61,8 +30,7 @@ function Epl2HtmlPrinter ()
 	var orientation = 'top';
 	var resolution = 203;
 
-	var commands = {};
-	commands.A = function () {
+	this.commands.A = function () {
 		var text = document.createElement('p');
 		text.style.left = inches(arguments[1]);
 		text.style[orientation] = inches(arguments[2]);
@@ -77,7 +45,7 @@ function Epl2HtmlPrinter ()
 		text.innerText = arguments[8].replace(/^"|"$/g, '');
 		page.appendChild(text);
 	};
-	commands.LO = function () {
+	this.commands.LO = function () {
 		var line = document.createElement('hr');
 		line.style.left = inches(arguments[1]);
 		line.style[orientation] = inches(arguments[2]);
@@ -85,22 +53,22 @@ function Epl2HtmlPrinter ()
 		line.style.height = inches(arguments[4]);
 		page.appendChild(line);
 	};
-	commands.N = function () {
+	this.commands.N = function () {
 		buffer = '';
 		page = document.createElement('div');
 		page.className = 'page';
 	};
-	commands.P = function () {
+	this.commands.P = function () {
 		var labelSets = arguments[1];
 		while (labelSets--) {
 			container.appendChild(page);
 		}
 	};
-	commands.q = function () {
+	this.commands.q = function () {
 		labelWidth = arguments[1];
 		page.style.width = inches(labelWidth);
 	};
-	commands.Q = function ()
+	this.commands.Q = function ()
 	{
 		if (arguments[1] < 0 || arguments[1] > 65536)
 			return console.error("Qp1 value out of bounds");
