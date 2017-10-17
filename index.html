@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="utf-8"/>
 		<title>Quagga EPL2 file editor and previewer</title>
+		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 		<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/superhero/bootstrap.min.css" rel="stylesheet" integrity="sha384-Xqcy5ttufkC3rBa8EdiAyA1VgOGrmel2Y+wxm4K3kI3fcjTWlDWrlnxyD6hOi3PF" crossorigin="anonymous">
 		<style type="text/css">
 * { margin:0; padding:0; }
@@ -36,14 +37,17 @@ html,body { font-family:sans; }
 		<div id="editor" class="pane" style="position:absolute; top:0; right:0; bottom:0; width:34%; padding:1px; box-sizing:border-box">
 			<div class="btn-toolbar" role="toolbar">
 				<button class="btn btn-primary" onclick="editor.print()">
-					Print
+					<i class="fa fa-print fa-fw"></i>
 				</button>
 				<div class="input-group">
 					<button class="btn btn-default" onclick="editorFile.click()">
-						Open
+						<i class="fa fa-folder-open fa-fw"></i>
 					</button>
 					<input class="btn btn-file" id="editorFile" type="file" onchange="editor.loadFile(this, 'editorText')"/>
 				</div>
+				<a href="https://github.com/shb/quagga" target="shb/quagga/help" class="btn btn-info pull-right">
+					<i class="fa fa-question fa-fw"></i>
+				</a>
 			</div>
 			<br/>
 			<div>
